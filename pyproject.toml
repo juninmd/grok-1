@@ -1,3 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "grok-1"
+version = "0.1.0"
+description = "Grok-1 model implementation in JAX/Haiku"
+requires-python = ">=3.9"
+# As dependencias de runtime ficam em requirements.txt de proposito:
+# jax[cuda12-pip]==0.4.25 fixa jaxlib com versao local (+cuda12.cudnn89), que so
+# resolve usando o indice `-f https://.../jax_cuda_releases.html` das
+# requirements. Uma dependencia em pyproject nao consegue carregar esse indice.
+
+[tool.setuptools]
+py-modules = ["model", "runners", "run", "checkpoint"]
+
 [tool.ruff]
 indent-width = 4
 line-length = 100
